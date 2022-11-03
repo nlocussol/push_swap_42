@@ -6,7 +6,7 @@
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:08:36 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/02 23:53:23 by nlocusso         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:38:08 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ int	check_duplicates(t_tab_int *tab)
 		{
 			if (tab->pile_a[i] == tab->pile_a[j] && j != i)
 			{
-				ft_free(tab);
 				write(2, "Error\n", 6);
-				exit(0);
+				ft_free(tab);
 			}
 			j++;
 		}
@@ -49,16 +48,9 @@ void	put_to_int(char **tab, t_tab_int *tab_int)
 	{
 		if (ft_atoi(tab[i]).check == 1)
 		{
-			i = 0;
-			while (tab[i] != NULL)
-			{
-				free(tab[i]);
-				i++;
-			}
-			free(tab);
-			ft_free(tab_int);
+			free_split(tab);
 			write(2, "Error\n", 6);
-			exit(0);
+			ft_free(tab_int);
 		}	
 		tab_int->pile_a[i] = ft_atoi(tab[i]).atoi;
 		i++;
@@ -84,25 +76,15 @@ static int	check_minus(char *argv)
 	return (0);
 }
 
-char	*pars_str(char *str, char **argv, int argc)
+static char	*pars_argv(char	*str, char **argv, int argc)
 {
-	int		i;
 	char	*tmp;
 
-	i = 0;
-	if (check_minus(argv[argc]) == 1)
-	{
-		free(str);
-		return (NULL);
-	}
 	while (argc != 1)
 	{
-		tmp = ft_strjoin(" ", str);
 		if (check_minus(argv[argc - 1]) == 1)
-		{
-			free(str);
-			return (NULL);
-		}
+			free_str(str);
+		tmp = ft_strjoin(" ", str);
 		free(str);
 		str = tmp;
 		tmp = ft_strjoin(argv[argc - 1], str);
@@ -110,6 +92,17 @@ char	*pars_str(char *str, char **argv, int argc)
 		str = tmp;
 		argc--;
 	}
+	return (str);
+}
+
+char	*pars_str(char *str, char **argv, int argc)
+{
+	int		i;
+
+	i = 0;
+	if (check_minus(argv[argc]) == 1)
+		free_str(str);
+	str = pars_argv(str, argv, argc);
 	while (str[i] != '\0')
 	{
 		if ((str[i] >= '0' && str[i] <= '9') || str[i] == '-')
@@ -117,10 +110,7 @@ char	*pars_str(char *str, char **argv, int argc)
 		else if (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 			i++;
 		else
-		{
-			free(str);
-			return (NULL);
-		}
+			free_str(str);
 	}
 	return (str);
 }

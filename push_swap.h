@@ -6,7 +6,7 @@
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 10:37:03 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/01 11:49:41 by nlocusso         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:12:00 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ typedef struct s_tab_int
 	int	*cpy;
 	int	*index;
 	int	length_a;	
-	int	length_b;	
+	int	length_b;
+	int	static_length_a;	
 }	t_tab_int;
 
 typedef struct s_list_move
@@ -33,7 +34,16 @@ typedef struct s_list_move
 	struct s_list_move	*next;
 }	t_list_move;
 
+void		special_sort(t_tab_int *tab, t_list_move **tab_move);
+int			check_sort(t_tab_int *tab);
+int			check_fastest(t_tab_int *tab, int max2, int max);
+int			find_max2(t_tab_int	*tab);
+int			find_min_max_index(int *tab, int length, int min_max);
+int			nb_chunk(t_tab_int *tab);
+int			less_max_chunk(t_tab_int *tab, int len_chunk, int cnt, int len_a);
+void		free_str(char *str);
 void		put_move(t_list_move **tab_move);
+void		free_split(char	**str);
 void		add_move(t_list_move **tab_move, char *str);
 void		sort_algo(t_tab_int *tab);
 void		p_move_all(t_tab_int *tab, t_list_move **tab_move, char *str);

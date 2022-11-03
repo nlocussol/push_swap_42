@@ -6,11 +6,11 @@
 #    By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 17:13:34 by nlocusso          #+#    #+#              #
-#    Updated: 2022/11/02 23:15:12 by nlocusso         ###   ########.fr        #
+#    Updated: 2022/11/03 15:53:03 by nlocusso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		= main.c pars_argv.c sort_algo.c r_movement.c other_movement.c
+SRCS		= main.c special_sort.c max_chunk.c initialized_free.c pars_argv.c sort_algo.c r_movement.c other_movement.c
 OBJS		= ${SRCS:.c=.o}
 NAME		= push_swap
 CC			= gcc -g
@@ -35,6 +35,8 @@ fclean :	clean
 			rm -f ${NAME} 
 			make -C libft fclean
 
-re :        fclean all
+re :
+			make fclean
+			make all
 
 .PHONY : all clean fclean re bonus
