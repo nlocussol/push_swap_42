@@ -6,7 +6,7 @@
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:11:31 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/04 15:33:02 by nlocusso         ###   ########.fr       */
+/*   Updated: 2022/11/04 17:26:55 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	p_move_pa(t_tab_int *tab)
 	i = 1;
 	tmp = ft_calloc(tab->length_a + 1, sizeof(int));
 	tmp2 = ft_calloc(tab->length_b - 1, sizeof(int));
+	if (!tmp || !tmp2)
+		ft_free(tab);
 	tmp[0] = tab->pile_b[0];
 	while (i != tab->length_a + 1)
 	{
@@ -69,6 +71,8 @@ void	p_move_pb(t_tab_int *tab)
 	i = 1;
 	tmp = ft_calloc(tab->length_a - 1, sizeof(int));
 	tmp2 = ft_calloc(tab->length_b + 1, sizeof(int));
+	if (!tmp || !tmp2)
+		ft_free(tab);
 	tmp2[0] = tab->pile_a[0];
 	while (i != tab->length_b + 1)
 	{
