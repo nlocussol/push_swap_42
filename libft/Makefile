@@ -6,7 +6,7 @@
 #    By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 17:13:34 by nlocusso          #+#    #+#              #
-#    Updated: 2022/11/04 17:22:44 by nlocusso         ###   ########.fr        #
+#    Updated: 2022/11/04 19:26:06 by nlocusso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,14 +37,12 @@ all :        ${NAME}
 .c.o :		${OBJS}
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 	
-${NAME}:	${OBJS} printf.a
+${NAME}:	${OBJS}
+			make -C ft_printf
 			ar rc ${NAME} ${OBJS} ft_printf/libftprintf.a
 
 bonus :		${BOBJS} ${OBJS}
 	ar rcs ${NAME} ${BOBJS} ${OBJS}
-
-printf.a :
-	make -C ft_printf
 
 clean :
 			rm -f ${OBJS} ${BOBJS}
