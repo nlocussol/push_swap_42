@@ -6,7 +6,7 @@
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 11:18:27 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/04 15:42:54 by nlocusso         ###   ########.fr       */
+/*   Updated: 2022/11/04 19:07:38 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ void	checker(t_tab_int *tab)
 {
 	char		*line;
 
+	if (check_sort_checker(tab) == -1)
+	{
+		ft_printf("OK\n");
+		ft_free(tab);
+		exit(0);
+	}
 	line = get_next_line(0);
 	while (line != NULL)
 	{
