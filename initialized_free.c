@@ -6,7 +6,7 @@
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:22:51 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/03 13:31:16 by nlocusso         ###   ########.fr       */
+/*   Updated: 2022/11/04 11:33:56 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	free_str(char *str)
 {
 	free(str);
-	write(2, "Errro\n", 6);
+	write(2, "Error\n", 6);
 	exit(0);
 }
 

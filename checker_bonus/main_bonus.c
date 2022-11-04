@@ -1,58 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 10:28:07 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/04 17:07:07 by nlocusso         ###   ########.fr       */
+/*   Created: 2022/11/04 11:18:27 by nlocusso          #+#    #+#             */
+/*   Updated: 2022/11/04 15:42:54 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	printf_move(t_list_move *tmp)
-{
-	while (tmp != NULL)
-	{
-		if (tmp->next && ((!ft_strncmp(tmp->content, "ra", 2)
-					&& !ft_strncmp(tmp->next->content, "rb", 2))
-				|| (!ft_strncmp(tmp->content, "rb", 2)
-					&& !ft_strncmp(tmp->next->content, "ra", 2))))
-		{
-			ft_printf("rr\n");
-			tmp = tmp->next;
-		}
-		else if (tmp->next && ((!ft_strncmp(tmp->content, "rra", 3)
-					&& !ft_strncmp(tmp->next->content, "rrb", 3))
-				|| (!ft_strncmp(tmp->content, "rrb", 3)
-					&& !ft_strncmp(tmp->next->content, "rra", 3))))
-		{
-			ft_printf("rrr\n");
-			tmp = tmp->next;
-		}
-		else
-			ft_printf("%s\n", tmp->content);
-		tmp = tmp->next;
-	}
-}
-
-void	put_move(t_list_move **tab_move)
-{
-	t_list_move	*tmp;
-
-	tmp = *tab_move;
-	printf_move(tmp);
-	while (*tab_move != NULL)
-	{
-		tmp = (*tab_move)->next;
-		free(*tab_move);
-		*tab_move = tmp;
-	}
-}
-
-int	check_sort(t_tab_int *tab)
+int	check_sort_checker(t_tab_int *tab)
 {
 	int	i;
 
@@ -64,6 +24,27 @@ int	check_sort(t_tab_int *tab)
 		i++;
 	}
 	return (-1);
+}
+
+void	checker(t_tab_int *tab)
+{
+	char		*line;
+
+	line = get_next_line(0);
+	while (line != NULL)
+	{
+		if (check_move(tab, line))
+		{
+			free(line);
+			break ;
+		}
+		free(line);
+		line = get_next_line(0);
+	}
+	if (check_sort_checker(tab) == -1)
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 }
 
 int	main(int argc, char **argv)
@@ -85,7 +66,7 @@ int	main(int argc, char **argv)
 	put_to_int(tab_str, tab_int);
 	free_split(tab_str);
 	check_duplicates(tab_int);
-	sort_algo(tab_int);
+	checker(tab_int);
 	ft_free(tab_int);
 	return (0);
 }

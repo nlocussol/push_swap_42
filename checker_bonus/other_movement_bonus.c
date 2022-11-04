@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   other_movement.c                                   :+:      :+:    :+:   */
+/*   other_movement_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:11:31 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/04 15:33:02 by nlocusso         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:46:10 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	s_move(t_tab_int *tab, t_list_move **tab_move, char *str)
+void	s_move_checker(t_tab_int *tab, char *str)
 {
 	int	temp;
 
-	add_move(tab_move, str);
 	if ((!ft_strncmp(str, "sa", 2) || !ft_strncmp(str, "ss", 2))
 		&& tab->length_a > 1)
 	{
@@ -33,7 +32,7 @@ void	s_move(t_tab_int *tab, t_list_move **tab_move, char *str)
 	}
 }
 
-void	p_move_pa(t_tab_int *tab)
+static void	p_move_pa(t_tab_int *tab)
 {
 	int			*tmp;
 	int			*tmp2;
@@ -60,7 +59,7 @@ void	p_move_pa(t_tab_int *tab)
 	tab->pile_b = tmp2;
 }
 
-void	p_move_pb(t_tab_int *tab)
+static void	p_move_pb(t_tab_int *tab)
 {
 	int			*tmp;
 	int			*tmp2;
@@ -87,7 +86,7 @@ void	p_move_pb(t_tab_int *tab)
 	tab->pile_b = tmp2;
 }
 
-void	p_move_all(t_tab_int *tab, t_list_move **tab_move, char *str)
+void	p_move_all_checker(t_tab_int *tab, char *str)
 {
 	if (!ft_strncmp(str, "pa", 2) && tab->length_b != 0)
 	{
@@ -101,5 +100,4 @@ void	p_move_all(t_tab_int *tab, t_list_move **tab_move, char *str)
 		tab->length_a--;
 		tab->length_b++;
 	}
-	add_move(tab_move, str);
 }

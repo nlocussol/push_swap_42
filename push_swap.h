@@ -6,7 +6,7 @@
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 10:37:03 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/03 16:12:00 by nlocusso         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:19:39 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_list_move
 	struct s_list_move	*next;
 }	t_list_move;
 
+int			check_move(t_tab_int *tab, char *str);
 void		special_sort(t_tab_int *tab, t_list_move **tab_move);
 int			check_sort(t_tab_int *tab);
 int			check_fastest(t_tab_int *tab, int max2, int max);
@@ -55,5 +56,10 @@ void		ft_initialized_struct(t_tab_int *tab_int, int len_a, int len_b);
 int			check_duplicates(t_tab_int *tab);
 void		put_to_int(char **tab, t_tab_int *tab_int);
 char		*pars_str(char *str, char **argv, int argc);
+
+void		p_move_all_checker(t_tab_int *tab, char *str);
+void		s_move_checker(t_tab_int *tab, char *str);
+void		r_movement_checker(t_tab_int *tab, char *str);
+void		rr_movement_checker(t_tab_int *tab, char *str);
 
 #endif
