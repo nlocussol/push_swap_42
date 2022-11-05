@@ -6,7 +6,7 @@
 #    By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 17:13:34 by nlocusso          #+#    #+#              #
-#    Updated: 2022/11/05 10:08:57 by nlocusso         ###   ########.fr        #
+#    Updated: 2022/11/05 10:12:28 by nlocusso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ clean :
 			make -C libft clean
 
 fclean :	clean
-			rm -f ${NAME} 
+			rm -f ${NAME} ${BONUS}
 			make -C libft fclean
 
 re :
