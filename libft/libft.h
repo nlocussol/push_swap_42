@@ -6,7 +6,7 @@
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 16:44:01 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/04 14:35:09 by nlocusso         ###   ########.fr       */
+/*   Updated: 2022/11/06 15:02:12 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void			ft_bzero(void *s, size_t n);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);
 int				ft_isascii(int c);
-int				ft_isdigit(int c);
+int				ft_isdigit(char *c);
 int				ft_isprint(int c);
 void			*ft_memchr(const void *mem, int SearchedChar, size_t size);
 void			*ft_memcpy(void	*dest, const void *src, size_t size);

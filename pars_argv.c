@@ -6,7 +6,7 @@
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:08:36 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/03 10:38:08 by nlocusso         ###   ########.fr       */
+/*   Updated: 2022/11/06 15:18:06 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,14 @@ static char	*pars_argv(char	*str, char **argv, int argc)
 {
 	char	*tmp;
 
+	if (ft_isdigit(argv[argc]) == 0 || str[0] == '\0')
+		return (NULL);
 	while (argc != 1)
 	{
 		if (check_minus(argv[argc - 1]) == 1)
 			free_str(str);
+		if (ft_isdigit(argv[argc]) == 0)
+			return (NULL);
 		tmp = ft_strjoin(" ", str);
 		free(str);
 		str = tmp;
@@ -99,13 +103,19 @@ char	*pars_str(char *str, char **argv, int argc)
 {
 	int		i;
 
-	i = 0;
 	if (check_minus(argv[argc]) == 1)
 		free_str(str);
+	i = 0;
 	str = pars_argv(str, argv, argc);
+	if (str == NULL || str[0] == '\0' || ft_isdigit(str) == 0)
+	{
+		free(str);
+		write(2, "Error\n", 6);
+		exit(0);
+	}
 	while (str[i] != '\0')
 	{
-		if ((str[i] >= '0' && str[i] <= '9') || str[i] == '-')
+		if ((str[i] >= '0' && str[i] <= '9') || str[i] == '-' || str[i] == '+')
 			i++;
 		else if (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 			i++;

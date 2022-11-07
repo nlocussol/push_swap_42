@@ -6,7 +6,7 @@
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 11:18:27 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/04 19:07:38 by nlocusso         ###   ########.fr       */
+/*   Updated: 2022/11/05 12:05:57 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,14 @@ void	checker(t_tab_int *tab)
 	{
 		if (check_move(tab, line))
 		{
+			ft_printf("Error\n");
 			free(line);
-			break ;
+			return ;
 		}
 		free(line);
 		line = get_next_line(0);
 	}
-	if (check_sort_checker(tab) == -1)
+	if (check_sort_checker(tab) == -1 && tab->length_b == 0)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");

@@ -6,7 +6,7 @@
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:29:31 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/03 16:11:45 by nlocusso         ###   ########.fr       */
+/*   Updated: 2022/11/05 15:24:32 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	sort_algo(t_tab_int *tab)
 	if (check_sort(tab) == -1 || tab->length_a == 1)
 		ft_free(tab);
 	tab_move = NULL;
-	if (tab->length_a < 4)
+	if (tab->length_a < 6)
 		special_sort(tab, &tab_move);
 	ft_sort_int_tab(tab->cpy, tab->length_a);
 	sort_with_chunk(tab, &tab_move);
