@@ -6,7 +6,7 @@
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 11:18:27 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/05 12:05:57 by nlocusso         ###   ########.fr       */
+/*   Updated: 2022/11/11 14:22:43 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ int	main(int argc, char **argv)
 	t_tab_int	*tab_int;
 
 	if (argc <= 1)
-	{
-		write(2, "Error\n", 6);
 		return (1);
-	}
 	str_to_pars = ft_strdup(argv[argc - 1]);
 	str_to_pars = pars_str(str_to_pars, argv, argc - 1);
 	tab_int = malloc(sizeof(t_tab_int));

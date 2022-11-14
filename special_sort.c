@@ -6,7 +6,7 @@
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:26:49 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/05 15:54:44 by nlocusso         ###   ########.fr       */
+/*   Updated: 2022/11/11 14:27:28 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,20 @@ void	sort_2and3(t_tab_int *tab, t_list_move **tab_move)
 {
 	int	nb_check;
 	int	max_a;
+	int	min_a;
 
 	if (tab->length_a == 2 && check_sort(tab) != -1)
 		s_move(tab, tab_move, "sa");
 	else if (tab->length_a == 3)
 	{
 		max_a = find_min_max_index(tab->pile_a, tab->length_a, 1);
+		min_a = find_min_max_index(tab->pile_a, tab->length_a, 0);
+		if (max_a == 0 && min_a == 2)
+		{
+			s_move(tab, tab_move, "sa");
+			r_movement(tab, tab_move, "rra");
+			return ;
+		}
 		nb_check = tab->pile_a[max_a];
 		while (tab->pile_a[0] != nb_check)
 			r_movement(tab, tab_move, "ra");
