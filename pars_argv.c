@@ -6,7 +6,7 @@
 /*   By: nlocusso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:08:36 by nlocusso          #+#    #+#             */
-/*   Updated: 2022/11/06 15:18:06 by nlocusso         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:46:38 by nlocusso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,19 @@ static char	*pars_argv(char	*str, char **argv, int argc)
 	char	*tmp;
 
 	if (ft_isdigit(argv[argc]) == 0 || str[0] == '\0')
+	{
+		free(str);
 		return (NULL);
+	}
 	while (argc != 1)
 	{
 		if (check_minus(argv[argc - 1]) == 1)
 			free_str(str);
 		if (ft_isdigit(argv[argc]) == 0)
+		{
+			free(str);
 			return (NULL);
+		}
 		tmp = ft_strjoin(" ", str);
 		free(str);
 		str = tmp;
